@@ -54,6 +54,6 @@ All the Detailed logs are saved to a `sql_injection_scan.log` file. This include
 - Pauloads tested.
 - Any potential vulnerabilities detected.
 
-### License
+## License
 
 This project is open-source and available under the **MIT License**.
