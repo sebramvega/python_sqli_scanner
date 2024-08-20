@@ -1,0 +1,50 @@
+2024-08-20 14:47:56,949 - INFO - Starting SQL injection scan on https://cnn.com
+2024-08-20 14:47:56,949 - INFO - Fetching forms from https://cnn.com
+2024-08-20 14:47:56,958 - DEBUG - Starting new HTTPS connection (1): cnn.com:443
+2024-08-20 14:47:57,483 - DEBUG - https://cnn.com:443 "GET / HTTP/1.1" 301 0
+2024-08-20 14:47:57,487 - DEBUG - Starting new HTTPS connection (1): www.cnn.com:443
+2024-08-20 14:47:58,021 - DEBUG - https://www.cnn.com:443 "GET / HTTP/1.1" 200 582747
+2024-08-20 14:47:58,612 - DEBUG - Found 3 forms on https://cnn.com
+2024-08-20 14:47:58,612 - INFO - Detected 3 forms on https://cnn.com.
+2024-08-20 14:47:58,618 - DEBUG - Extracting form details
+2024-08-20 14:47:58,619 - DEBUG - Form details: {'action': None, 'method': 'get', 'inputs': [{'type': 'radio', 'name': 'ad', 'value': '1'}, {'type': 'radio', 'name': 'ad', 'value': '2'}, {'type': 'radio', 'name': 'ad', 'value': '3'}, {'type': 'radio', 'name': 'ad', 'value': '4'}, {'type': 'radio', 'name': 'ad', 'value': '5'}, {'type': 'checkbox', 'name': 'didEncounterIssues', 'value': ''}, {'type': 'checkbox', 'name': 'issues', 'value': 'Video player was slow to load content'}, {'type': 'checkbox', 'name': 'issues', 'value': 'Video content never loaded'}, {'type': 'checkbox', 'name': 'issues', 'value': 'Ad froze or did not finish loading'}, {'type': 'checkbox', 'name': 'issues', 'value': 'Video content did not start after ad'}, {'type': 'checkbox', 'name': 'issues', 'value': 'Audio on ad was too loud'}, {'type': 'checkbox', 'name': 'issues', 'value': 'Other issues'}, {'type': 'checkbox', 'name': 'issues', 'value': 'Ad never loaded'}, {'type': 'checkbox', 'name': 'issues', 'value': 'Ad prevented/slowed the page from loading'}, {'type': 'checkbox', 'name': 'issues', 'value': 'Content moved around while ad loaded'}, {'type': 'checkbox', 'name': 'issues', 'value': "Ad was repetitive to ads I've seen previously"}, {'type': 'checkbox', 'name': 'issues', 'value': 'Other issues'}]}
+2024-08-20 14:47:58,619 - DEBUG - Testing with payload: {'ad': '5"', 'didEncounterIssues': 'test"', 'issues': 'Other issues"'}
+2024-08-20 14:47:58,619 - DEBUG - Resetting dropped connection: cnn.com
+2024-08-20 14:47:59,216 - DEBUG - https://cnn.com:443 "GET /?ad=5%22&didEncounterIssues=test%22&issues=Other+issues%22 HTTP/1.1" 301 0
+2024-08-20 14:47:59,233 - DEBUG - https://www.cnn.com:443 "GET /?ad=5%22&didEncounterIssues=test%22&issues=Other+issues%22 HTTP/1.1" 200 582747
+2024-08-20 14:47:59,264 - DEBUG - Request completed in 0.64 seconds
+2024-08-20 14:47:59,264 - DEBUG - Checking if the response is vulnerable to SQL injection
+2024-08-20 14:47:59,490 - DEBUG - Testing with payload: {'ad': "5'", 'didEncounterIssues': "test'", 'issues': "Other issues'"}
+2024-08-20 14:47:59,491 - DEBUG - Resetting dropped connection: cnn.com
+2024-08-20 14:48:00,060 - DEBUG - https://cnn.com:443 "GET /?ad=5%27&didEncounterIssues=test%27&issues=Other+issues%27 HTTP/1.1" 301 0
+2024-08-20 14:48:00,076 - DEBUG - https://www.cnn.com:443 "GET /?ad=5%27&didEncounterIssues=test%27&issues=Other+issues%27 HTTP/1.1" 200 582747
+2024-08-20 14:48:00,103 - DEBUG - Request completed in 0.61 seconds
+2024-08-20 14:48:00,103 - DEBUG - Checking if the response is vulnerable to SQL injection
+2024-08-20 14:48:00,269 - DEBUG - Extracting form details
+2024-08-20 14:48:00,269 - DEBUG - Form details: {'action': 'https://www.cnn.com/search', 'method': 'get', 'inputs': [{'type': 'text', 'name': 'q', 'value': ''}]}
+2024-08-20 14:48:00,269 - DEBUG - Testing with payload: {'q': 'test"'}
+2024-08-20 14:48:00,269 - DEBUG - Resetting dropped connection: cnn.com
+2024-08-20 14:48:00,799 - DEBUG - https://cnn.com:443 "GET /?q=test%22 HTTP/1.1" 301 0
+2024-08-20 14:48:00,815 - DEBUG - https://www.cnn.com:443 "GET /?q=test%22 HTTP/1.1" 200 582747
+2024-08-20 14:48:00,839 - DEBUG - Request completed in 0.57 seconds
+2024-08-20 14:48:00,839 - DEBUG - Checking if the response is vulnerable to SQL injection
+2024-08-20 14:48:00,984 - DEBUG - Testing with payload: {'q': "test'"}
+2024-08-20 14:48:00,984 - DEBUG - Resetting dropped connection: cnn.com
+2024-08-20 14:48:01,480 - DEBUG - https://cnn.com:443 "GET /?q=test%27 HTTP/1.1" 301 0
+2024-08-20 14:48:01,488 - DEBUG - https://www.cnn.com:443 "GET /?q=test%27 HTTP/1.1" 200 582747
+2024-08-20 14:48:01,512 - DEBUG - Request completed in 0.53 seconds
+2024-08-20 14:48:01,512 - DEBUG - Checking if the response is vulnerable to SQL injection
+2024-08-20 14:48:01,656 - DEBUG - Extracting form details
+2024-08-20 14:48:01,656 - DEBUG - Form details: {'action': 'https://www.cnn.com/search', 'method': 'get', 'inputs': [{'type': 'text', 'name': 'q', 'value': ''}]}
+2024-08-20 14:48:01,656 - DEBUG - Testing with payload: {'q': 'test"'}
+2024-08-20 14:48:01,664 - DEBUG - Resetting dropped connection: cnn.com
+2024-08-20 14:48:02,152 - DEBUG - https://cnn.com:443 "GET /?q=test%22 HTTP/1.1" 301 0
+2024-08-20 14:48:02,160 - DEBUG - https://www.cnn.com:443 "GET /?q=test%22 HTTP/1.1" 200 582747
+2024-08-20 14:48:02,192 - DEBUG - Request completed in 0.54 seconds
+2024-08-20 14:48:02,192 - DEBUG - Checking if the response is vulnerable to SQL injection
+2024-08-20 14:48:02,329 - DEBUG - Testing with payload: {'q': "test'"}
+2024-08-20 14:48:02,329 - DEBUG - Resetting dropped connection: cnn.com
+2024-08-20 14:48:02,825 - DEBUG - https://cnn.com:443 "GET /?q=test%27 HTTP/1.1" 301 0
+2024-08-20 14:48:02,834 - DEBUG - https://www.cnn.com:443 "GET /?q=test%27 HTTP/1.1" 200 582747
+2024-08-20 14:48:02,858 - DEBUG - Request completed in 0.53 seconds
+2024-08-20 14:48:02,858 - DEBUG - Checking if the response is vulnerable to SQL injection
