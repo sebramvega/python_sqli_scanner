@@ -51,7 +51,7 @@ All the Detailed logs are saved to a `sql_injection_scan.log` file. This include
 
 - Number of forms found.
 - Form details.
-- Pauloads tested.
+- Payloads tested.
 - Any potential vulnerabilities detected.
 
 ## License
